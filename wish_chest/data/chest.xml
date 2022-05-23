@@ -1,27 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?> 
-<desires>
-  <desire category='desire' date='2025.07.15'>
-     Стать сеньором по руби 
-  </desire>
-  <desire category='desire' date='2025.07.20'>
-     Bentley Continental GT 
-  </desire>
-  <desire category='desire' date='2022.05.23'>
-     Жесику Албу 
-  </desire>
-  <desire category='desire' date='2022.05.23'>
-     изучить Жава 
-  </desire>
-  <desire category='desire' date='2022.05.23'>
-     захватить мир 
-  </desire>
-  <desire category='desire' date='2023.01.01'>
-     мир во всем мире 
-  </desire>
-  <desire category='desire' date='2022.05.23'>
-     69 
-  </desire>
-  <desire category='desire' date='2022.05.23'>
-    69
-  </desire>
-</desires>
+<wishes>
+  <wish date='20.01.2001'>
+     Захватить мир 
+  </wish>
+  <wish date='23.05.2022'>
+    Изучить Java
+  </wish>
+</wishes>
