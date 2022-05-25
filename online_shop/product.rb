@@ -1,9 +1,9 @@
-class Product
-    def initialize(price, amount)
+class Product 
+    def initialize(price, amount_available)
       @price = price
-      @amount_available = amount
+      @amount_available = amount_available
     end
-  
+    
     def price
       @price
     end
@@ -27,7 +27,7 @@ class Product
   
       puts "x. Покинуть магазин\n\n"
     end
-  
+    
     def buy
       if @amount_available > 0
         puts "* * *"
@@ -108,5 +108,44 @@ class Product
   
       # Наконец, вернём массив продуктов
       return result
+    end
+
+    # Напишем статический метод, который будет возвращать список детей класса Product
+    def self.product_types
+      [Book, Movie, Disk]
+    end
+
+    # А этот абстрактный метод будет помогать каждому ребёнку
+    # заполнять его поля из консоли
+    def read_from_console
+    end
+
+    # А этот метод будет определён у родителя и доопределён у детей
+    def to_xml
+      res = REXML::Element.new('product')
+      res.attributes['price'] = @price
+      res.attributes['amount_available'] = @amount_available
+      res
+    end
+
+    # И наконец, напишем метод, который будет сохранять продукт в xml-файл
+    # Предполагается, что файл уже готов по структуре для сохранения
+    def save_to_xml(file_name)
+      file_path = File.dirname(__FILE__) + '/' + file_name
+
+      unless File.exist?(file_path)
+        abort "Файл #{file_path} не найден"
+      end
+
+      # Читаем текущий список продуктов
+      file = File.new(file_path, 'r:UTF-8')
+      doc = REXML::Document.new(file)
+      file.close
+
+      # Дописываем новый продукт
+      file = File.new(file_path, 'w:UTF-8')
+      doc.root.add_element(self.to_xml)
+      doc.write(file, 2)
+      file.close
     end
   end
